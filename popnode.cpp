@@ -33,7 +33,7 @@ class List{
     }
     void pop_front(){
         if(head==NULL){
-            cout<<"LL is empty \n"
+            cout<<"LL is empty \n";
             return;
         }
         Node* temp = head;

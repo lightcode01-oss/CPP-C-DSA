@@ -1,63 +1,54 @@
-#include <iostream>
+#include<iostream>
 using namespace std;
-
 class Node{
     public:
     int data;
     Node* next;
+    Node* prev;
 
     Node(int val){
         data = val;
         next = NULL;
+        prev = NULL;
     }
 };
 
-class List{
+class linklist{
+    private:
     Node* head;
-    Node* tail;
-    
     public:
-    List(){
-        head = tail = NULL;
+    linklist(){
+        head = NULL;
     }
-    
+
     void push_front(int val){
         Node* newNode = new Node(val);
         if(head==NULL){
-            head = tail = newNode;
+            head = newNode;
             return;
         }else{
             newNode->next=head;
+            head->prev=newNode;
             head = newNode;
         }
     }
-    void pop_anyposition(){
-        if(head==NULL){
-            cout<<"LL is empty \n";
-            return;
-        }
-        Node* temp = head;
-    
-        temp->next = temp->next->next;
-        delete temp;
-    }
 
-    void printLL(){
+     void printLL(){
         Node* temp = head;
         while(temp!=NULL){
-            cout<<temp->data<<"->"<<"Null";
+            cout<<temp->data<<"->";
             temp = temp->next;
         }
         cout<<endl;
     }
+
 };
 
+
 int main(){
-    List ll;
+    linklist ll;
     ll.push_front(1);
     ll.push_front(2);
     ll.push_front(3);
-    ll.printLL();
-    ll.pop_anyposition();
     ll.printLL();
 }
